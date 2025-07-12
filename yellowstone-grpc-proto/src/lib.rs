@@ -141,22 +141,23 @@ pub mod convert_to {
             pre_balances,
             post_balances,
             inner_instructions,
-            log_messages,
+            log_messages: _,
             pre_token_balances,
             post_token_balances,
-            rewards,
+            rewards: _,
             loaded_addresses,
             return_data,
-            compute_units_consumed, 
-            cost_units } = meta;
+            compute_units_consumed,
+            cost_units,
+        } = meta;
         let err = create_transaction_error(status);
         let inner_instructions_none = inner_instructions.is_none();
         let inner_instructions = inner_instructions
             .as_deref()
             .map(create_inner_instructions_vec)
             .unwrap_or_default();
-        let log_messages_none = log_messages.is_none();
-        let log_messages = log_messages.clone().unwrap_or_default();
+        // let log_messages_none = log_messages.is_none();
+        // let log_messages = log_messages.clone().unwrap_or_default();
         let pre_token_balances = pre_token_balances
             .as_deref()
             .map(create_token_balances)
@@ -165,7 +166,7 @@ pub mod convert_to {
             .as_deref()
             .map(create_token_balances)
             .unwrap_or_default();
-        let rewards = rewards.as_deref().map(create_rewards).unwrap_or_default();
+        // let rewards = rewards.as_deref().map(create_rewards).unwrap_or_default();
         let loaded_writable_addresses = create_pubkeys(&loaded_addresses.writable);
         let loaded_readonly_addresses = create_pubkeys(&loaded_addresses.readonly);
 
@@ -176,11 +177,11 @@ pub mod convert_to {
             post_balances: post_balances.clone(),
             inner_instructions,
             inner_instructions_none,
-            log_messages,
-            log_messages_none,
+            log_messages: vec![],
+            log_messages_none: true,
             pre_token_balances,
             post_token_balances,
-            rewards,
+            rewards: vec![],
             loaded_writable_addresses,
             loaded_readonly_addresses,
             return_data: return_data.as_ref().map(create_return_data),

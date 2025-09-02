@@ -16,6 +16,28 @@ The minor version will be incremented upon a breaking change and the patch versi
 
 ### Breaking
 
+
+## 2025-08-04
+
+- yellowstone-grpc-geyser-9.0.0
+- yellowstone-grpc-client-simple-9.0.0
+- yellowstone-grpc-client-9.0.0
+- yellowstone-grpc-geyser-9.0.0
+- yellowstone-grpc-proto-9.0.0
+
+### Breaking
+
+- Upgaded to tonic 0.14.0 which can break customer code if they rely on tonic to do something else.
+
+## 2025-08-01
+
+- yellowstone-grpc-geyser-8.1.0
+
+### Features
+
+- geyser plugin exposes new metrics to measure subscriber performance such send/recv bandwidth load.
+- Added metrics to measure the amount of account update and sizes we are receiving from agave.
+
 ## 2025-06-30
 
 - @triton-one/yellowstone-grpc@4.1.0
